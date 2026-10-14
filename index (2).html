@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vì sao có mùa?</title>
+<style>
+:root{--bg:#f6f8f5;--card:#fff;--tx:#1d2a22;--mu:#5b6b61;--ac:#2f7d4f;--wa:#b4532a;--bd:#d9e2db;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141a16;--card:#1d2620;--tx:#e6efe9;--mu:#9fb0a5;--ac:#5fc08a;--wa:#e48a5e;--bd:#2f3d34}}
+:root[data-theme="dark"]{--bg:#141a16;--card:#1d2620;--tx:#e6efe9;--mu:#9fb0a5;--ac:#5fc08a;--wa:#e48a5e;--bd:#2f3d34}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 system-ui,sans-serif}
+main{max-width:640px;margin:0 auto;padding:16px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin:14px 0}
+h1{font-size:22px;margin:8px 0}h2{font-size:18px;margin:0 0 8px}
+.tag{color:var(--ac);font-weight:700;font-size:13px;text-transform:uppercase}
+label{display:block;padding:8px 10px;border:1px solid var(--bd);border-radius:8px;margin:6px 0;cursor:pointer}
+button{background:var(--ac);color:#fff;border:0;border-radius:8px;padding:10px 16px;font-size:15px;cursor:pointer;margin-top:8px}
+button:disabled{opacity:.4}
+textarea{width:100%;box-sizing:border-box;min-height:90px;padding:8px;border-radius:8px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);font:inherit}
+.bar{height:22px;border-radius:5px;color:#fff;font-size:13px;padding:0 8px;line-height:22px;margin:4px 0;white-space:nowrap}
+.hid{display:none}.mu{color:var(--mu);font-size:14px}.wa{color:var(--wa);font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:14px}td,th{border:1px solid var(--bd);padding:6px;text-align:left}
+</style></head><body><main>
+<h1>Vì sao Trái Đất có mùa?</h1>
+<p class="mu">Học liệu tự kiểm tra, khoảng 5 phút. Em không cần tạo tài khoản.</p>
+
+<section class="card" id="s1">
+<div class="tag">Bước 1 · Em nghĩ gì?</div>
+<h2>Ở bán cầu Bắc, so với mùa đông, vào mùa hè Trái Đất ở vị trí nào so với Mặt Trời?</h2>
+<label><input type="radio" name="a" value="gan"> Gần Mặt Trời hơn</label>
+<label><input type="radio" name="a" value="xa"> Xa Mặt Trời hơn</label>
+<label><input type="radio" name="a" value="bang"> Khoảng cách gần như nhau</label>
+<p class="mu">Em chắc chắn đến mức nào?</p>
+<label><input type="radio" name="c" value="1"> Đoán thôi</label>
+<label><input type="radio" name="c" value="2"> Khá chắc</label>
+<label><input type="radio" name="c" value="3"> Rất chắc</label>
+<button id="b1" disabled>Khoá câu trả lời và xem bằng chứng</button>
+</section>
+
+<section class="card hid" id="s2">
+<div class="tag">Bước 2 · Bằng chứng</div>
+<h2>Số liệu khoảng cách Trái Đất - Mặt Trời</h2>
+<p id="yours" class="mu"></p>
+<p><b>Hoạt động đo:</b> chọn bán cầu, kéo tháng và giờ trong ngày. Quan sát Mặt Trời, bóng cây, ngày đêm, mùa và khoảng cách.</p>
+<input type="range" id="m" min="1" max="12" value="1" style="width:100%"><p><b id="mn0"></b></p>
+<div><button id="hN">Bán cầu Bắc (40°B)</button> <button id="hS">Bán cầu Nam (40°N)</button></div>
+<svg id="sc" viewBox="0 0 400 230" style="width:100%;border-radius:10px;display:block;margin-top:8px">
+<rect id="sky" width="400" height="230" fill="#7ec8ff"/><g id="stars" opacity="0"></g>
+<circle id="glow" r="26" fill="#ffd35a" opacity=".35"/><circle id="sun" r="14" fill="#ffc933"/>
+<text id="moon" font-size="22" text-anchor="middle" opacity="0">🌙</text>
+<path id="hill" d="M0 150 Q70 125 140 150 T280 148 T400 140 V230 H0Z" fill="#4fae4f"/>
+<rect y="196" width="400" height="20" fill="#555"/><path d="M0 206H400" stroke="#ddd" stroke-dasharray="14 10"/>
+<line id="shd" x1="90" y1="186" x2="90" y2="186" stroke="#000" stroke-opacity=".35" stroke-width="8" stroke-linecap="round"/>
+<rect x="86" y="150" width="8" height="36" fill="#6b4a2b"/><circle id="cr" cx="90" cy="140" r="24" fill="#2f8f3f"/>
+<text x="300" y="186" font-size="36" text-anchor="middle">🏠</text>
+<text id="cw" font-size="22" text-anchor="middle">🐄</text><text id="dg" font-size="18" text-anchor="middle">🐕</text><text id="p1" font-size="24" text-anchor="middle">🚶</text><text id="p2" font-size="22" text-anchor="middle">🧒</text><text id="cy" font-size="22" text-anchor="middle">🚴</text>
+<text id="se" x="150" y="188" font-size="20" text-anchor="middle">🌻</text>
+<text id="car" x="300" y="212" font-size="22" text-anchor="middle">🚗</text>
+<g id="bird"><path d="M-7 0L-14 -3L-7 2Z" fill="#4a5a6a"/><ellipse rx="8" ry="4.5" fill="#5b7288"/><circle cx="7" cy="-3" r="3.2" fill="#5b7288"/><circle cx="8" cy="-3.6" r=".8" fill="#fff"/><path d="M10 -3L15 -2L10 -1Z" fill="#f0a020"/><path id="wg" d="M-3 -1Q-5 -13 5 -11Q3 -5 3 -1Z" fill="#3d5163"/></g>
+<rect id="nt" width="400" height="230" fill="#000" opacity="0" pointer-events="none"/>
+</svg>
+<p class="mu">Tháng: <b id="mn"></b> · Giờ: <b id="hv"></b></p>
+<input type="range" id="hr" min="0" max="24" step="0.25" value="12" style="width:100%">
+<button id="pl">Chạy ngày đêm</button>
+<table><tr><th>Khoảng cách tới Mặt Trời</th><td id="i1"></td></tr>
+<tr><th>Độ cao Mặt Trời lúc 12 giờ</th><td id="i2"></td></tr>
+<tr><th>Độ dài ban ngày</th><td id="i3"></td></tr>
+<tr><th>Mùa ở bán cầu này</th><td id="i4"></td></tr></table>
+<p class="mu">Kéo thanh tháng ở trên để đổi tháng. Hai bán cầu cùng khoảng cách tới Mặt Trời (chênh lệch dưới 0,01%), nhưng góc chiếu và độ dài ngày thì khác nhau.</p>
+<p><b>Bảng 12 tháng</b></p>
+<table id="tb"></table>
+<table><tr><th>Thời điểm</th><th>Bán cầu Bắc (Hà Nội, Tokyo)</th><th>Bán cầu Nam (Sydney)</th></tr>
+<tr><td>Tháng 12</td><td>Mùa đông</td><td>Mùa hè</td></tr>
+<tr><td>Tháng 6</td><td>Mùa hè</td><td>Mùa đông</td></tr></table>
+<p>Hai câu hỏi cho em:</p>
+<p>1. Nếu mùa do khoảng cách quyết định, số liệu ở trên nói điều gì?<br>2. Cùng lúc, hai bán cầu có cùng khoảng cách tới Mặt Trời nhưng mùa lại ngược nhau. Điều đó cho em thấy gì?<br>3. So sánh độ cao Mặt Trời lúc 12 giờ và độ dài ban ngày giữa tháng 1 và tháng 7. Điều này liên quan thế nào đến mùa?</p>
+<button id="b2">Em đã nghĩ xong, sang bước viết lại</button>
+</section>
+
+<section class="card hid" id="s3">
+<div class="tag">Bước 3 · Viết lại</div>
+<h2>Bây giờ em hiểu thế nào?</h2>
+<p class="mu">Viết lại bằng lời của em: trước đây em nghĩ gì, bằng chứng cho thấy gì, nay em hiểu ra sao. Gợi ý khung: "Trước đây em nghĩ… Nhưng số liệu cho thấy… Vì vậy em hiểu rằng mùa có thể do…"</p>
+<textarea id="t" placeholder="Viết ở đây…"></textarea><br>
+<button id="b3" disabled>Xem lời giải thích khoa học để so sánh</button>
+<div id="ans" class="hid">
+<p><span class="wa">Khoảng cách không phải nguyên nhân.</span> Trục Trái Đất nghiêng khoảng 23,5° so với mặt phẳng quỹ đạo. Khi một bán cầu nghiêng về phía Mặt Trời, ánh sáng chiếu tới gần vuông góc hơn và ngày dài hơn, nên nhận nhiều nhiệt hơn: đó là mùa hè. Bán cầu kia nghiêng ra xa nên là mùa đông.</p>
+<p class="mu">Hãy đối chiếu với câu viết của em. Phần nào em đã đúng, phần nào cần sửa?</p>
+<p class="mu">Khoảng cách tính từ công thức quỹ đạo elip của Trái Đất (độ lệch tâm khoảng 0,0167, 1 AU khoảng 149,6 triệu km), lấy giữa mỗi tháng. Cần đối chiếu với nguồn như NASA hoặc JPL Horizons.</p>
+</div>
+</section>
+<script>
+var $=function(i){return document.getElementById(i)},ans={};
+function chk(){ans.a=(document.querySelector('input[name=a]:checked')||{}).value;ans.c=(document.querySelector('input[name=c]:checked')||{}).value;$('b1').disabled=!(ans.a&&ans.c)}
+document.querySelectorAll('input').forEach(function(e){e.onchange=chk});
+$('b1').onclick=function(){var m={gan:'gần hơn',xa:'xa hơn',bang:'như nhau'};
+$('yours').textContent='Dự đoán của em: mùa hè Trái Đất '+m[ans.a]+' Mặt Trời. Hãy so với số liệu thật.';
+$('s2').classList.remove('hid');$('b1').disabled=true;$('s2').scrollIntoView({behavior:'smooth'})};
+var AU=149.598,NM=['Đông','Xuân','Hè','Thu'],R=Math.PI/180,hemi=1,play=0,cx=440,bx=0;
+var GC=['#eef3f8','#8fd18a','#4fae4f','#c8a24a'],TC=['#7a6a5a','#9bd67a','#2f8f3f','#d9822b'],SE=['⛄','🌸','🌻','🍂'];
+function dist(m){var d=Math.round((m-1)*30.44+15);return AU*(1.00014-0.01671*Math.cos(0.9856*(d-4)*R))}
+function dec(m){var d=Math.round((m-1)*30.44+15);return -23.44*Math.cos(2*Math.PI/365*(d+10))}
+function sea(m){return m==12||m<3?0:m<6?1:m<9?2:3}
+function f(x){return x.toFixed(1).replace('.',',')}
+function lp(a,b,t){return Math.round(a+(b-a)*t)}
+function cl(x,a,b){return Math.max(a,Math.min(b,x))}
+function at(id,o){for(var k in o)$(id).setAttribute(k,o[k])}
+var st='';for(var j=0;j<40;j++){st+='<circle cx="'+(j*37%400)+'" cy="'+(j*53%130)+'" r="1.2" fill="#fff"/>'}$('stars').innerHTML=st;
+function upd(){
+var m=+$('m').value,hr=+$('hr').value,lat=40*hemi,dl=dec(m),n=sea(m),se=hemi>0?n:(n+2)%4;
+var H=(hr-12)*15,alt=Math.asin(Math.sin(lat*R)*Math.sin(dl*R)+Math.cos(lat*R)*Math.cos(dl*R)*Math.cos(H*R))/R;
+var sx=200+180*cl(H/100,-1,1),sy=150-alt/90*130,t=cl((alt+6)/16,0,1),ns=cl(-alt/8,0,1);
+$('sky').setAttribute('fill','rgb('+lp(11,126,t)+','+lp(21,200,t)+','+lp(48,255,t)+')');
+at('sun',{cx:sx,cy:sy});at('glow',{cx:sx,cy:sy});
+at('moon',{x:400-sx,y:150+alt/90*130,opacity:ns});$('stars').setAttribute('opacity',ns);
+$('nt').setAttribute('opacity',(1-t)*.5);$('bird').setAttribute('opacity',t);
+$('hill').setAttribute('fill',GC[se]);at('cr',{fill:TC[se],opacity:se==0?.45:1});$('se').textContent=SE[se];
+var L=alt>2?Math.min(160,50/Math.tan(alt*R)):0,dr=sx<200?1:-1;
+at('shd',{x2:90+dr*L,'stroke-opacity':alt>2?.35:0});
+var c=cl(-Math.tan(lat*R)*Math.tan(dl*R),-1,1),len=2*Math.acos(c)/R/15;
+$('i1').textContent=f(dist(m))+' triệu km (cả hai bán cầu)';
+$('i2').textContent=Math.round(90-Math.abs(lat-dl))+'°';
+$('i3').textContent=f(len)+' giờ';$('i4').textContent=NM[se];
+$('mn').textContent=$('mn0').textContent='Tháng '+m;
+var hh=Math.floor(hr),mm=Math.round((hr-hh)*60);$('hv').textContent=hh+':'+(mm<10?'0':'')+mm;
+$('hN').style.opacity=hemi>0?1:.45;$('hS').style.opacity=hemi>0?.45:1}
+var h='<tr><th>Tháng</th><th>Khoảng cách (triệu km)</th><th>Bắc</th><th>Nam</th></tr>';
+for(var i=1;i<=12;i++){h+='<tr><td>'+i+'</td><td>'+f(dist(i))+'</td><td>'+NM[sea(i)]+'</td><td>'+NM[(sea(i)+2)%4]+'</td></tr>'}
+$('tb').innerHTML=h;
+$('m').oninput=$('hr').oninput=upd;
+$('hN').onclick=function(){hemi=1;upd()};$('hS').onclick=function(){hemi=-1;upd()};
+$('pl').onclick=function(){play=!play;this.textContent=play?'Dừng':'Chạy ngày đêm'};
+var MV=[{id:'p1',x:50,y:190,v:.35,a:30,b:250,d:1},{id:'dg',x:30,y:192,v:.5,a:20,b:260,d:1},{id:'p2',x:330,y:195,v:.25,a:310,b:380,d:-1},{id:'cw',x:200,y:190,v:.15,a:170,b:250,d:1},{id:'cy',x:100,y:207,v:.9,a:-20,b:420,d:1}];
+setInterval(function(){cx-=1.2;if(cx<-40)cx=440;$('car').setAttribute('x',cx);bx=(bx+.6)%460;at('bird',{transform:'translate('+(bx-30)+','+(50+10*Math.sin(bx/12))+')'});$('wg').setAttribute('transform','scale(1,'+Math.sin(bx/2.5).toFixed(2)+')');MV.forEach(function(o){o.x+=o.v*o.d;if(o.x>o.b)o.d=-1;if(o.x<o.a)o.d=1;$(o.id).setAttribute('transform','translate('+o.x+','+o.y+') scale('+(-o.d)+',1)')});
+if(play){var v=+$('hr').value+.05;$('hr').value=v>24?0:v;upd()}},40);
+upd();
+$('b2').onclick=function(){$('s3').classList.remove('hid');$('s3').scrollIntoView({behavior:'smooth'})};
+$('t').oninput=function(){$('b3').disabled=this.value.trim().length<20};
+$('b3').onclick=function(){$('ans').classList.remove('hid');this.disabled=true};
+</script></main></body></html>
